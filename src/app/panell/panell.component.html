@@ -1,0 +1,14 @@
+<form [formGroup]="panellForm" autocomplete="off">
+        {{panellForm.value | json}}
+        <div class="container border rounded-3 border-3 border-dark p-3 m-2">
+                <p>Número de páginas <button (click)="plus1()">+</button>
+                        <input type="number" formControlName="paginas" (change)="webPrice()" [(ngModel)]="number1">
+                        <button (click)="minus1()">-</button>
+                </p>
+                <p>Número de idiomas <button (click)="plus2()">+</button>
+                        <input type="number" formControlName="idiomas" (change)="webPrice()" [(ngModel)]="number2">
+                        <button (click)="minus2()">-</button>
+                </p>
+                <p>Precio: {{webPrice()}}</p>
+        </div>
+</form>

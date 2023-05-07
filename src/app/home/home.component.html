@@ -1,0 +1,43 @@
+<form [formGroup]="myForm" (ngSubmit)="onSave()" autocomplete="off">
+    <p>¿Qué servicios desea?
+        Que el botón de más y menos de panell varien los números en el input y arriba.
+        Que se reseteen los números de paginas e idiomas al guardar array.
+        Que vuelvan a false los web, seo y ad.
+        ngOninit para los formularios.</p>
+    <input type="text" formControlName="nombre" placeholder="Nombre del Presupuesto"><br>
+    <input type="checkbox" formControlName="web">Página web
+    (500€)<br>
+    <div *ngIf="f['web'].value === true">
+        <app-panell [countNum1]="num1" (num1)="precioPag($event)" [countNum2]="num2" (num2)="precioLang($event)"
+            [countPLS]="pagLangSuma" (pagLangSuma)="precioWeb($event)"></app-panell>
+    </div>
+    <input type="checkbox" formControlName="seo">Campaña SEO (300€)<br>
+    <input type="checkbox" formControlName="ad">Campaña de publicidad
+    (200€)<br>
+    <p type="number">Precio: {{calcularPrecio()}}</p>
+    <button type="submit">Guardar</button>
+    <button type="button" (click)="verPresus()">Ver Lista</button>
+</form>
+
+{{myForm.value | json}}
+
+<div *ngIf="presuMostrado"><br>
+    <p>Ordenar: </p>
+    <!-- <button (click)="ordenarNombre()">abc</button> -->
+    <button>fecha</button>
+    <button>reset</button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3 border border-dark fs-5 fw-bold text-center p-2 m-2" *ngFor="let p of presu">
+                <p>Nombre: {{p.nombre}}</p>
+                <p>¿Web?: {{p.web}}</p>
+                <p>Páginas: {{p.pags}}</p>
+                <p>Idiomas: {{p.langs}}</p>
+                <p>Precio Web: {{p.precioWeb}}</p>
+                <p>¿SEO?: {{p.seo}}</p>
+                <p>¿AD?: {{p.ad}}</p>
+                <p>Precio Total: {{p.precioTotal}}</p>
+            </div>
+        </div>
+    </div>
+</div>
