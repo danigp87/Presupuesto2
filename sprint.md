@@ -3,8 +3,8 @@ RESUMEN
 - En la pantalla del presupuesto (HOME), un botón para volver para atrás. (Routing para la lógica de ir de una página a otra) - HECHO
 - 3 checkbox; uno abre PANELL con páginas y lenguas - HECHO
 	- Botones de + y - e input donde poder escribir el número directamente - HECHO
-- Abajo el precio total
-- Un botón para guardar en un array lo seleccionado (crear interface y array en otro componente(?)):
+- Abajo el precio total - HECHO
+- Un botón para guardar en un array lo seleccionado - HECHO (crear interface y array en otro componente(?)):
 	- web: true/false
 		- páginas: 0
 		- idiomas: 0
@@ -47,10 +47,10 @@ EX5
 Pop Up's de ayuda
 
 EX6
-Inputs para nombre del presupuesto y del cliente
-Listado de presupuestos a la derecha
-- Aquest array de pressupostos s'ha de guardar en el servei creat anteriorment per a calcular el cost total.
-- El llistat dels pressupostos no s'ha de renderitzar directament en el component Home amb un ngFor, cal crear un nou component (pressupostList per exemple), que anomeni al servei per a obtenir l'array de pressupostos i s'encarregui de renderitzar-los.
+Inputs para nombre del presupuesto y del cliente - HECHO
+Listado de presupuestos a la derecha - HECHO
+- Aquest array de pressupostos s'ha de guardar en el servei creat anteriorment per a calcular el cost total. - NO
+- El llistat dels pressupostos no s'ha de renderitzar directament en el component Home amb un ngFor, cal crear un nou component (pressupostList per exemple), que anomeni al servei per a obtenir l'array de pressupostos i s'encarregui de renderitzar-los. - NO
 
 EX7
 3 botones para ordenar los presupuestos:

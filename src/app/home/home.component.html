@@ -1,10 +1,7 @@
 <form [formGroup]="myForm" (ngSubmit)="onSave()" autocomplete="off">
-    <p>¿Qué servicios desea?
-        Que el botón de más y menos de panell varien los números en el input y arriba.
-        Que se reseteen los números de paginas e idiomas al guardar array.
-        Que vuelvan a false los web, seo y ad.
-        ngOninit para los formularios.</p>
-    <input type="text" formControlName="nombre" placeholder="Nombre del Presupuesto"><br>
+    <p class="fs-1">¿Qué servicios desea?</p>
+    <p>Presupuesto: <input type="text" formControlName="nombrePresu" placeholder="Nombre del Presupuesto"></p>
+    <p>Cliente: <input type="text" formControlName="nombreCliente" placeholder="Nombre del Cliente"></p>
     <input type="checkbox" formControlName="web">Página web
     (500€)<br>
     <div *ngIf="f['web'].value === true">
@@ -14,28 +11,31 @@
     <input type="checkbox" formControlName="seo">Campaña SEO (300€)<br>
     <input type="checkbox" formControlName="ad">Campaña de publicidad
     (200€)<br>
-    <p type="number">Precio: {{calcularPrecio()}}</p>
-    <button type="submit">Guardar</button>
-    <button type="button" (click)="verPresus()">Ver Lista</button>
+    <p class="p-2" type="number">- Precio total: {{calcularPrecio()}}</p>
+    <button class="col-3 btn btn-success" type="submit">Guardar Presupuesto</button>
+    <button class="col-3 btn btn-warning" type="button" (click)="verPresus()">Ver Presupuestos</button>
 </form>
 
-{{myForm.value | json}}
+<!-- {{myForm.value | json}} -->
 
 <div *ngIf="presuMostrado"><br>
-    <p>Ordenar: </p>
-    <!-- <button (click)="ordenarNombre()">abc</button> -->
-    <button>fecha</button>
-    <button>reset</button>
+    <!-- <p>Ordenar: </p>
+    <button>Presupuesto</button>
+    <button>Cliente</button> -->
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-3 border border-dark fs-5 fw-bold text-center p-2 m-2" *ngFor="let p of presu">
-                <p>Nombre: {{p.nombre}}</p>
-                <p>¿Web?: {{p.web}}</p>
+        <!-- <div class="row pb-3">
+            <input class="col-3" type="text" placeholder="Nombre del Presupuesto"><button class="col-1">Buscar</button></div> -->
+            <div class="row">
+            <div class="col-3 border border-dark fs-5 fw-bold text-center p-2 m-2"
+                *ngFor="let p of presu">
+                <p>Presupuesto: {{p.nombrePresu}}</p>
+                <p>Cliente: {{p.nombreCliente}}</p>
+                <p>WEB (500€): {{p.web}}</p>
                 <p>Páginas: {{p.pags}}</p>
                 <p>Idiomas: {{p.langs}}</p>
-                <p>Precio Web: {{p.precioWeb}}</p>
-                <p>¿SEO?: {{p.seo}}</p>
-                <p>¿AD?: {{p.ad}}</p>
+                <p>Extras Web: {{p.precioWeb}}</p>
+                <p>SEO (300€): {{p.seo}}</p>
+                <p>AD (200€): {{p.ad}}</p>
                 <p>Precio Total: {{p.precioTotal}}</p>
             </div>
         </div>

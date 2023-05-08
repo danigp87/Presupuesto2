@@ -1,12 +1,13 @@
-<div *ngIf="welcome, else next">
-    <h1>Creamostuweb.com</h1>
-    <h2>Selecciona los productos que necesitas y...</h2>
-    <h3>¡Haz tu presupuesto ahora!</h3>
-    <button (click)="start()">Comenzar</button>
-</div>
+<div class="container-fluid d-flex align-items-center p-5" style="overflow-x: hidden">
+<div class="row">
+<div class="col" *ngIf="welcome, else next">
+    <p class="fs-1">CREAMOSTUWEB.COM</p>
+    <p class="fs-2">Dale a comenzar y crea tu presupuesto seleccionando los productos que necesitas.</p>
+        <button class="btn btn-primary" (click)="start()">Comenzar</button>
+</div></div></div>
 
 <ng-template #next>
+    <button class="col-3 btn btn-danger" (click)="back()">Volver</button>
     <app-home></app-home>
-    <button (click)="back()">Volver</button>
 </ng-template>
 
