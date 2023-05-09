@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+import { Component, Input, NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 import { PanellComponent } from './panell/panell.component';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { Presu } from './home/home.component';
 
 
@@ -12,7 +13,7 @@ import { Presu } from './home/home.component';
 })
 
 export class AppComponent {
-  
+
   @Input() presus: Presu[] = []
 
   welcome = true
@@ -26,7 +27,15 @@ export class AppComponent {
 }
 
 const routes: Routes = [
-  { path: '', component: AppComponent},
+  { path: '', component: AppComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'panell', component: PanellComponent }
+  { path: 'panell', component: PanellComponent },
+  { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ]
+
+/* @NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+}) */
+
+/* export class AppRoutingModule {} */

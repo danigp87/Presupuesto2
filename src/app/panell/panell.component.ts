@@ -1,6 +1,9 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, NgModule } from '@angular/core';
 import { Presu } from '../home/home.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AppRoutingModule } from '../app-routing.module';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-panell',
@@ -34,6 +37,23 @@ export class PanellComponent {
 
   get f() { return this.panellForm.controls }
 
+
+  private _numPage!: number;
+  private _numLang!: number;
+
+  get countPage() {
+    return this.number1
+  }
+  set countPage(numPag: number) {
+    this._numPage = numPag
+  }
+  get countLang() {
+    return this.number2
+  }
+  set countLang(numLang: number) {
+    this._numPage = numLang
+  }
+
   plus1() {
     this.number1++
     this.num1.emit(this.number1);
@@ -61,18 +81,18 @@ export class PanellComponent {
   }
 
 
-  /* public contentModal: string = "";
+  public contentModal: string = "";
 
   public openModal(content: any, id: string) {
     
-    if(id == "pageModal") {
-      this.contentModal = "En este componente tiene que indicarse el número de paginas que tendra su sitio web."
-      this.modal.open(content, {size: "xl"})
+    if(id === "pageModal") {
+      this.contentModal = "Selecciona el número de páginas que tendrá tu web."
+      this.modal.open(content)
     }
-    if(id == "langModal") {
-      this.contentModal = "En este componente tiene que indicarse el número de idiomas que tendra su sitio web."
-      this.modal.open(content, {size: "xl"})
+    if(id === "langModal") {
+      this.contentModal = "Selecciona el número de idiomas que tendrá tu web."
+      this.modal.open(content)
     }
-  } */
+  }
 
 }

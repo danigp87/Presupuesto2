@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { PanellComponent } from './panell/panell.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule
   ],
   exports: [RouterModule],
   providers: [],
