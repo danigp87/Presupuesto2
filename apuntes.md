@@ -218,7 +218,7 @@ para que haga el import
 
 CREAR RUTAS: en el mismo .ts del componente principal:
     const appRoutes: Routes = [     -> Routes saldrá como error pero hacemos corrección rápida
-                                    poniendo el curso sobre la palabra y no hará el import también
+                                    poniendo el curso sobre la palabra y nos hará el import también
     {path:'', component: HomeComponent},                   -> '' está vacío porque es la página principal
     {path:'proyectos', component: ProyectosComponent},
     {path:'contacto', component: ContactoComponent}
@@ -228,7 +228,8 @@ En imports: [
     RouterModule.forRoot(appRoutes)      -> Añadimos éste a los que ya estaban para que se cree 
 ]                                           el import también arriba; entre paréntesis la const creada
 
-En el HTML, en los links poner: href="/proyectos", href="/contacto", los necesarios 
+En el HTML, en los links poner: href="/proyectos", href="/contacto", los necesarios
+    routerLink="/proyectos" en lugar del href
 
 FORMULARIOS REACTIVOS
 En el loquesea.module.ts:

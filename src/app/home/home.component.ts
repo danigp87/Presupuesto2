@@ -1,6 +1,6 @@
-import { AfterViewChecked, Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PanellComponent } from '../panell/panell.component';
+import { Component, Output } from '@angular/core';
+import { AppRoutingModule } from '../app-routing.module';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export { Presu }
 
 interface Presu {
@@ -28,7 +28,6 @@ export class HomeComponent {
     { nombrePresu: "Presupuesto 2", nombreCliente: "María", web: true, pags: 6, langs: 2, precioWeb: 360, seo: true, ad: true, precioTotal: 1360 },
     { nombrePresu: "Presupuesto 3", nombreCliente: "John", web: true, pags: 5, langs: 1, precioWeb: 150, seo: true, ad: true, precioTotal: 1150 }
   ]
-
   @Output() presus: Presu[] = []
 
   public myForm: FormGroup = this.fb.group({
@@ -39,20 +38,21 @@ export class HomeComponent {
     ad: [false, Validators.required],
   })
   constructor(private fb: FormBuilder) { }
-
   get f() { return this.myForm.controls }
 
+  presuMostrado: boolean = false
+  verPresus() {
+    this.presuMostrado = !this.presuMostrado
+  }
 
   num1: number = 0
   precioPag(event: number) {
     this.num1 = event
   }
-
   num2: number = 0
   precioLang(event: number) {
     this.num2 = event
   }
-
   pagLangSuma: number = 0
   precioWeb(event: number) {
     this.pagLangSuma = event
@@ -76,12 +76,6 @@ export class HomeComponent {
     return precioTotal;
   }
 
-  presuMostrado: boolean = false
-
-  verPresus() {
-    this.presuMostrado = !this.presuMostrado
-  }
-
   onSave() {
     const nombrePresu = this.myForm.controls['nombrePresu'].value
     const nombreCliente = this.myForm.controls['nombreCliente'].value
@@ -94,10 +88,10 @@ export class HomeComponent {
     const precioTotal = this.calcularPrecio()
 
     if (web === false && seo === false && ad === false) {
-      return alert('Por favor, seleccione al menos un servicio')
+      return alert('Por favor, seleccion al menos UN servicio')
     }
     if (nombrePresu === '' || nombreCliente === '') {
-      return alert('Por favor, introduzca los nombres del presupuesto y cliente')
+      return alert('Por favor, introduce los nombres de PRESUPUESTO y CLIENTE')
     }
 
     const nuevoPresu = { nombrePresu, nombreCliente, web, pags, langs, precioWeb, seo, ad, precioTotal }

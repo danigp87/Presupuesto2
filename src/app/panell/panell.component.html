@@ -1,28 +1,13 @@
-<ng-template #content let-modal>
-        <div class="modal-content modal-container">
-            <p>{{contentModal}}</p>
-        </div>
-    </ng-template>
-
 <form [formGroup]="panellForm" autocomplete="off">
         <!-- {{panellForm.value | json}} -->
         <div class="container border rounded-3 border-3 border-dark p-3 m-2">
-                <p>Número de páginas <button (click)="plus1()">+</button>
-                        <input type="number" formControlName="paginas" (change)="webPrice()"
-                        [placeholder]="countPage" [(ngModel)]="countPage">
-                        <button (click)="minus1()">-</button></p>
-
-                <div class="containerIcon align-items-center d-flex" (click)="openModal(content, 'pageModal')">
-                        <i class="fa-solid fa-circle-info"></i></div>
-
-                <p>Número de idiomas <button (click)="plus2()">+</button>
-                        <input type="number" formControlName="idiomas" (change)="webPrice()"
-                        [placeholder]="countLang" [(ngModel)]="countLang">
-                        <button (click)="minus2()">-</button></p>
-                        
-                <div class="containerIcon align-items-center d-flex" (click)="openModal(content, 'langModal')">
-                        <i class="fa-solid fa-circle-info"></i></div>
-
+                <app-modal></app-modal>
+                <p>Número de páginas <button (click)="updateValue(1, 'paginas')">+</button>
+                        <input type="number" formControlName="paginas" (change)="webPrice()" [placeholder]="countPage">
+                        <button (click)="updateValue(-1, 'paginas')">-</button></p>
+                <p>Número de idiomas <button (click)="updateValue(1, 'idiomas')">+</button>
+                        <input type="number" formControlName="idiomas" (click)="updateValue(1, 'idiomas')" [placeholder]="countLang">
+                        <button (click)="updateValue(-1, 'idiomas')">-</button></p>
                 <p>Precio: {{webPrice()}}</p>
         </div>
 </form>
